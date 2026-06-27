@@ -1,0 +1,150 @@
+{
+  "green": [
+    {
+      "id": "check_in",
+      "label": "Empathetic Check-in",
+      "description": "Noticing changes in mood or checking in on well-being.",
+      "keywords": ["are you okay", "are you ok", "you seemed", "i noticed", "just checking", "just wanted to check"]
+    },
+    {
+      "id": "appreciation",
+      "label": "Unprompted Appreciation",
+      "description": "Expressing gratitude or affection without immediate prompting.",
+      "keywords": ["just wanted to say", "genuinely", "honestly you", "thank you for being", "appreciate you", "so grateful"]
+    },
+    {
+      "id": "showing_up",
+      "label": "Active Presence",
+      "description": "Offering to show up physically or providing immediate support.",
+      "keywords": ["i'll come to you", "i will come to you", "omw", "on my way", "i'm here for you", "im here for you"]
+    },
+    {
+      "id": "proactive_plans",
+      "label": "Proactive Planning",
+      "description": "Initiating plans and taking ownership of shared time.",
+      "keywords": ["let's meet", "lets meet", "are you free on", "let's hang out", "planning to", "let's go to", "we should go"]
+    },
+    {
+      "id": "follow_up",
+      "label": "Difficult Conversation Follow-up",
+      "description": "Revisiting hard topics to ensure resolution and warmth.",
+      "keywords": ["about yesterday", "about earlier", "wanted to clear", "hope we are okay", "sorry about the way", "about what happened"]
+    },
+    {
+      "id": "active_support",
+      "label": "Active Support",
+      "description": "Validating that you have the other person's back unconditionally.",
+      "keywords": ["got your back", "behind you", "supporting you", "i'm here", "with you in this", "i support you"]
+    },
+    {
+      "id": "apology_ownership",
+      "label": "Owning Mistakes",
+      "description": "Apologizing sincerely and taking responsibility for friction.",
+      "keywords": ["my bad", "i'm sorry about", "i was wrong", "apologize for", "forgive me", "my mistake"]
+    },
+    {
+      "id": "detail_recall",
+      "label": "Detail Recall",
+      "description": "Remembering small facts or stories shared in previous conversations.",
+      "keywords": ["remember you said", "how did that go", "you mentioned", "last time you said", "about your test", "about your interview"]
+    },
+    {
+      "id": "active_encouragement",
+      "label": "Active Encouragement",
+      "description": "Cheering the other person on and expressing pride in their actions.",
+      "keywords": ["you've got this", "you got this", "go for it", "believe in you", "proud of you", "so proud"]
+    },
+    {
+      "id": "celebrate_wins",
+      "label": "Celebrating Wins",
+      "description": "Sharing excitement and validating their achievements.",
+      "keywords": ["congrats", "congratulations", "so happy for you", "deserved it", "huge win", "you deserve this"]
+    },
+    {
+      "id": "comforting",
+      "label": "Sincere Comforting",
+      "description": "De-escalating stress and offering soothing, grounding reassurance.",
+      "keywords": ["take a deep breath", "it's okay", "its okay", "don't worry", "dont worry", "everything will be fine", "take your time"]
+    },
+    {
+      "id": "check_in_call",
+      "label": "Checking in by Voice",
+      "description": "Requesting or initiating calls specifically to check on them.",
+      "keywords": ["can i call", "called you", "calling you", "talk on phone", "let's call"]
+    },
+    {
+      "id": "safe_space",
+      "label": "Judgment-Free Zone",
+      "description": "Explicitly establishing a safe space for open disclosure.",
+      "keywords": ["no judgment", "no judge", "you can tell me", "completely understand", "safe with me"]
+    },
+    {
+      "id": "shared_nostalgia",
+      "label": "Nostalgic Bonding",
+      "description": "Sharing positive memories and reinforcing connection history.",
+      "keywords": ["remember when", "last year", "throwback", "good old times", "that time we"]
+    },
+    {
+      "id": "future_eagerness",
+      "label": "Eager Anticipation",
+      "description": "Expressing positive excitement about spending time together.",
+      "keywords": ["can't wait", "cant wait", "so excited to see", "looking forward", "excited for"]
+    },
+    {
+      "id": "connection_trust",
+      "label": "Expressing Trust",
+      "description": "Communicating safety and thanking them for being a good listener.",
+      "keywords": ["i trust you", "you always help", "thank you for listening", "always feel safe", "means everything"]
+    },
+    {
+      "id": "small_gestures",
+      "label": "Small Kind Gestures",
+      "description": "Bringing gifts, food, or surprises without being asked.",
+      "keywords": ["brought you", "got you a", "for you", "bought this for", "picked up some"]
+    },
+    {
+      "id": "shared_humor",
+      "label": "Shared Humor",
+      "description": "Laughing together and maintaining lighthearted energy.",
+      "keywords": ["so funny", "lol", "lmao", "haha", "rofl", "lmfao"]
+    },
+    {
+      "id": "respect_boundaries",
+      "label": "Respecting Boundaries",
+      "description": "Explicitly validating their need for space, time, or limits.",
+      "keywords": ["if you want", "no pressure", "whenever you're ready", "whenever you are ready", "take all the time"]
+    },
+    {
+      "id": "safe_arrival",
+      "label": "Safe Arrival Validation",
+      "description": "Checking if they arrived safely or asking for home texts.",
+      "keywords": ["did you reach", "let me know when you get home", "text me when you arrive", "text me when you get back", "reach safely"]
+    }
+  ],
+  "red": [
+    {
+      "id": "deflection",
+      "label": "Consistent Deflection",
+      "description": "Avoiding commitments or kicking decisions down the road.",
+      "keywords": ["maybe later", "we'll see", "well see", "i'll let you know", "ill let you know", "not sure yet", "some other time"]
+    },
+    {
+      "id": "one_word_emotional",
+      "label": "One-Word Deflation",
+      "description": "Short, dry responses when the conversation demands depth.",
+      "keywords": ["k", "ok", "oh", "cool", "fine", "ah", "yup", "hmm"]
+    },
+    {
+      "id": "cancellation",
+      "label": "Repeated Cancellations",
+      "description": "Backing out of plans at the last minute.",
+      "keywords": ["can't make it", "cant make it", "something came up", "have to cancel", "cancellation", "can't go anymore", "won't be able to make it"]
+    },
+    {
+      "id": "topic_change",
+      "label": "Abrupt Topic Change",
+      "description": "Diverting attention away from uncomfortable emotional topics.",
+      "keywords": ["anyway", "by the way", "btw", "separate topic", "forget that", "moving on", "whatever"]
+    }
+  ]
+}

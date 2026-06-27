@@ -1,0 +1,98 @@
+{
+  "warm": [
+    {
+      "title": "For Us",
+      "artist": "Novo Amor",
+      "fallbackReason": "Matches the high compatibility and affectionate check-ins in your messages.",
+      "spotifySearchUrl": "https://open.spotify.com/search/For%20Us%20Novo%20Amor"
+    },
+    {
+      "title": "Bloom",
+      "artist": "The Paper Kites",
+      "fallbackReason": "Complements the warm, proactive plan-making and moments of genuine appreciation.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Bloom%20The%20Paper%20Kites"
+    },
+    {
+      "title": "Mystery of Love",
+      "artist": "Sufjan Stevens",
+      "fallbackReason": "Captures the beautiful emotional depth and vulnerability of your late-night chats.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Mystery%20of%20Love%20Sufjan%20Stevens"
+    },
+    {
+      "title": "Like Gold",
+      "artist": "Vance Joy",
+      "fallbackReason": "Reflects the steady communication balance and consistency you show each other.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Like%20Gold%20Vance%20Joy"
+    },
+    {
+      "title": "Holocene",
+      "artist": "Bon Iver",
+      "fallbackReason": "A gentle companion to the quiet, supportive space you both create.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Holocene%20Bon%20Iver"
+    }
+  ],
+  "melancholic": [
+    {
+      "title": "Saturn",
+      "artist": "Sleeping At Last",
+      "fallbackReason": "Resonates with the longer communication gaps and reflective silences in the chat.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Saturn%20Sleeping%20At%20Last"
+    },
+    {
+      "title": "Landslide",
+      "artist": "Oh Wonder",
+      "fallbackReason": "Complements the moments where one of you noticed the other was struggling.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Landslide%20Oh%20Wonder"
+    },
+    {
+      "title": "Youth",
+      "artist": "Daughter",
+      "fallbackReason": "Captures the bittersweet tone of the conversation and periods of silence.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Youth%20Daughter"
+    },
+    {
+      "title": "To Noise Making (Sing)",
+      "artist": "Hozier",
+      "fallbackReason": "An echo of the deeper, sometimes heavy conversations you have navigated.",
+      "spotifySearchUrl": "https://open.spotify.com/search/To%20Noise%20Making%20(Sing)%20Hozier"
+    },
+    {
+      "title": "Rosyln",
+      "artist": "Bon Iver & St. Vincent",
+      "fallbackReason": "Fits the quiet spaces and unresolved topics in your message exchanges.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Rosyln%20Bon%20Iver%20%26%20St.%20Vincent"
+    }
+  ],
+  "early_stage": [
+    {
+      "title": "Talk Too Much",
+      "artist": "COIN",
+      "fallbackReason": "Echoes the rapid-fire messaging and the initial excitement of checking in.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Talk%20Too%20Much%20COIN"
+    },
+    {
+      "title": "First Day of My Life",
+      "artist": "Bright Eyes",
+      "fallbackReason": "Captures the nervous, sparkling energy of your first conversations.",
+      "spotifySearchUrl": "https://open.spotify.com/search/First%20Day%20of%20My%20Life%20Bright%20Eyes"
+    },
+    {
+      "title": "1950",
+      "artist": "King Princess",
+      "fallbackReason": "Reflects the subtle tension and early-stage appreciation in your chat.",
+      "spotifySearchUrl": "https://open.spotify.com/search/1950%20King%20Princess"
+    },
+    {
+      "title": "Archie, Marry Me",
+      "artist": "Alvvays",
+      "fallbackReason": "Matches the lighthearted banter and playful question-asking patterns.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Archie,%20Marry%20Me%20Alvvays"
+    },
+    {
+      "title": "Warm Glow",
+      "artist": "Hippo Campus",
+      "fallbackReason": "Fits the bright, hopeful energy of starting to make plans together.",
+      "spotifySearchUrl": "https://open.spotify.com/search/Warm%20Glow%20Hippo%20Campus"
+    }
+  ]
+}
