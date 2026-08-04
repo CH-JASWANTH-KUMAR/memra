@@ -275,7 +275,7 @@ export default function HowItWorks() {
           </Link>
           <span>·</span>
           <a
-            href="https://github.com"
+            href="https://github.com/CH-JASWANTH-KUMAR/memra"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#c8956c] transition-colors"
