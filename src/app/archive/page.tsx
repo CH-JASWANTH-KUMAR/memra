@@ -9,6 +9,7 @@ import { Film, BarChart2, Flag, Music, Download, ChevronLeft, ChevronRight, Lock
 import Link from "next/link";
 import { captureElement } from "@/utils/captureElement";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { TimelineMovie } from "@/components/TimelineMovie";
 import { motion, AnimatePresence } from "framer-motion";
 
 declare global {
@@ -617,116 +618,12 @@ export default function Archive() {
         
         {/* ================= TAB 1: TIMELINE MOVIE ================= */}
         {activeTab === "timeline" && (
-          <section className={`flex-1 flex flex-col justify-between p-4 md:p-16 relative bg-gradient-to-b ${moodGradients[currentChapter]} transition-all duration-1000`}>
-            
-            {/* Top Chapter info */}
-            <div className="flex items-center justify-between w-full max-w-4xl mx-auto border-b border-[#c8956c]/10 pb-4">
-              <span className="font-mono text-xs text-[#c8956c] tracking-widest uppercase">
-                Chapter {moments[currentChapter].chapter}
-              </span>
-              <span className="font-mono text-[10px] text-[#f4f4f0]/40 tracking-wider uppercase">
-                {new Date(moments[currentChapter].date).toLocaleDateString("en-US", {
-                  month: "long",
-                  year: "numeric",
-                  day: "numeric",
-                })}
-              </span>
-            </div>
-
-            {/* Central Movie Screen */}
-            <div className="my-auto max-w-3xl mx-auto w-full text-center space-y-6 md:space-y-10 py-6 md:py-10">
-              <span className="font-serif text-lg md:text-xl italic text-[#c8956c]">
-                {moments[currentChapter].title}
-              </span>
-
-              {/* Large quote block */}
-              <div className="space-y-4 relative">
-                {/* Visual quote indicator (minimalist lines instead of emojis) */}
-                <div className="w-8 h-[1px] bg-[#c8956c]/30 mx-auto"></div>
-                <h2 className="font-serif text-2xl md:text-5xl font-light italic leading-normal text-[#f4f4f0] max-w-2xl mx-auto px-4">
-                  "{moments[currentChapter].quote}"
-                </h2>
-                <p className="font-mono text-[10px] text-[#f4f4f0]/50 tracking-wider uppercase">
-                  — {moments[currentChapter].sender}
-                </p>
-              </div>
-
-              <div className="w-12 h-[1px] bg-[#c8956c]/20 mx-auto"></div>
-
-              {/* Cinematic AI story text */}
-              <p className="font-serif text-base md:text-lg text-[#f4f4f0]/70 leading-relaxed italic max-w-2xl mx-auto px-6">
-                {narratives[currentChapter]}
-              </p>
-
-              {/* Memory Confidence Banner */}
-              <div className="bg-[#121210]/50 border border-[#c8956c]/10 rounded-sm p-4 max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
-                <div className="space-y-1">
-                  <span className="font-mono text-[8px] text-[#c8956c] tracking-widest uppercase block">
-                    Memory Authenticity
-                  </span>
-                  <div className="font-mono text-[10px] text-[#f4f4f0]/60">
-                    Evidence: {moments[currentChapter].evidenceList?.join(", ") || "Contextual Alignment"}
-                  </div>
-                  {moments[currentChapter].supportingSignals && moments[currentChapter].supportingSignals.length > 0 && (
-                    <div className="font-mono text-[9px] text-[#f4f4f0]/40">
-                      Signals: {moments[currentChapter].supportingSignals.join(" · ")}
-                    </div>
-                  )}
-                </div>
-                <div className="text-right shrink-0">
-                  <span className="font-mono text-[8px] text-[#f4f4f0]/30 uppercase block">
-                    Confidence
-                  </span>
-                  <span className="font-serif text-xl text-[#c8956c]">
-                    {moments[currentChapter].confidenceScore || 85}%
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Footer / Movie controls */}
-            <div className="w-full max-w-4xl mx-auto space-y-6">
-              {/* Progress Indicator */}
-              <div className="relative w-full h-[2px] bg-[#c8956c]/10">
-                <div
-                  className="absolute top-0 left-0 h-full bg-[#c8956c] transition-all duration-500"
-                  style={{ width: `${((currentChapter + 1) / moments.length) * 100}%` }}
-                ></div>
-              </div>
-
-              {/* Nav actions */}
-              <div className="flex items-center justify-between">
-                <button
-                  disabled={currentChapter === 0}
-                  onClick={() => setCurrentChapter((prev) => prev - 1)}
-                  className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-widest uppercase disabled:opacity-20 text-[#f4f4f0] hover:text-[#c8956c] transition-colors"
-                >
-                  <ChevronLeft className="w-4 h-4" /> Previous
-                </button>
-                <div className="flex gap-2">
-                  {moments.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentChapter(idx)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                        idx === currentChapter 
-                          ? "bg-[#c8956c]" 
-                          : "border border-[#c8956c]/50 bg-transparent hover:border-[#c8956c]"
-                      }`}
-                      aria-label={`Jump to chapter ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-                <button
-                  disabled={currentChapter === moments.length - 1}
-                  onClick={() => setCurrentChapter((prev) => prev + 1)}
-                  className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-widest uppercase disabled:opacity-20 text-[#f4f4f0] hover:text-[#c8956c] transition-colors"
-                >
-                  Next <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </section>
+          <TimelineMovie
+            moments={moments}
+            narratives={narratives}
+            totalMessages={stats?.totalMessages || messages?.length || 0}
+            greenFlagsCount={greenFlags ? greenFlags.reduce((acc, f) => acc + (f.evidence?.length || 1), 0) : moments.length}
+          />
         )}
 
         {/* ================= TAB 2: ANALYTICS & DNA ================= */}

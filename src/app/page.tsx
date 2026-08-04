@@ -3,8 +3,16 @@
 import React, { useState, useRef } from "react";
 import { useChat } from "@/context/ChatContext";
 import { sampleChatText } from "@/utils/sampleChat";
-import { Upload, ShieldCheck, HelpCircle, Film, Flag, BarChart2, ChevronDown, Sparkles } from "lucide-react";
+import { Upload, ShieldCheck, Film, Flag, BarChart2, Shield } from "lucide-react";
 import Link from "next/link";
+import {
+  SVG1_iOSChat,
+  SVG2_iOSContactInfo,
+  SVG3_iOSExportDialog,
+  SVG4_AndroidChat,
+  SVG5_AndroidMoreOptions,
+  SVG6_AndroidExportDialog,
+} from "@/components/ExportGuideMockups";
 
 export default function Home() {
   const { processChat, isAnalyzing, error } = useChat();
@@ -23,7 +31,6 @@ export default function Home() {
   ];
 
   const triggerLoadingSequence = async (text: string) => {
-    // Elegant loading text stepper
     const interval = setInterval(() => {
       setLoadingStep((prev) => (prev < loadingTexts.length - 1 ? prev + 1 : prev));
     }, 1200);
@@ -95,7 +102,6 @@ export default function Home() {
         <div className="fixed inset-0 bg-[#0b0b09]/95 z-50 flex flex-col items-center justify-center">
           <div className="max-w-md w-full px-8 text-center space-y-8">
             <div className="relative w-16 h-16 mx-auto">
-              {/* Spinning elegant minimalist frame */}
               <div className="absolute inset-0 rounded-full border border-[#c8956c]/20"></div>
               <div className="absolute inset-0 rounded-full border-t border-[#c8956c] animate-spin"></div>
             </div>
@@ -132,7 +138,7 @@ export default function Home() {
       </section>
 
       {/* Main Actions Box */}
-      <section className="w-full max-w-2xl mt-12 bg-[#121210] border border-[#c8956c]/15 rounded-sm p-8 md:p-12 space-y-8 shadow-2xl relative overflow-hidden">
+      <section className="w-full max-w-2xl mt-8 bg-[#121210] border border-[#c8956c]/15 rounded-sm p-8 md:p-12 space-y-8 shadow-2xl relative overflow-hidden">
         {/* Subtle decorative corners */}
         <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#c8956c]/30"></div>
         <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#c8956c]/30"></div>
@@ -194,7 +200,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feature Overviews (Visible without scroll on large screens, key trust block) */}
+      {/* STEP 3 — Testimonial / Trust Section */}
+      <section className="w-full max-w-3xl mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        {/* Item 1 */}
+        <div className="pt-4 border-t border-[#1a1a14] space-y-2">
+          <span className="text-[#c8956c] text-[10px] block">●</span>
+          <h5 className="font-mono text-[11px] text-[#c8956c]/80 tracking-widest uppercase font-semibold">
+            100% IN-BROWSER
+          </h5>
+          <p className="font-mono text-[10px] text-[#f4f4f0]/40 leading-relaxed whitespace-pre-line">
+            Your chat never leaves your device.{"\n"}Not stored. Not transmitted. Not seen.
+          </p>
+        </div>
+
+        {/* Item 2 */}
+        <div className="pt-4 border-t border-[#1a1a14] space-y-2">
+          <span className="text-[#c8956c] text-[10px] block">●</span>
+          <h5 className="font-mono text-[11px] text-[#c8956c]/80 tracking-widest uppercase font-semibold">
+            ZERO ACCOUNT NEEDED
+          </h5>
+          <p className="font-mono text-[10px] text-[#f4f4f0]/40 leading-relaxed whitespace-pre-line">
+            No signup. No email. No tracking.{"\n"}Upload and archive in under 60 seconds.
+          </p>
+        </div>
+
+        {/* Item 3 */}
+        <div className="pt-4 border-t border-[#1a1a14] space-y-2">
+          <span className="text-[#c8956c] text-[10px] block">●</span>
+          <h5 className="font-mono text-[11px] text-[#c8956c]/80 tracking-widest uppercase font-semibold">
+            OPEN SOURCE PARSER
+          </h5>
+          <p className="font-mono text-[10px] text-[#f4f4f0]/40 leading-relaxed whitespace-pre-line">
+            The code that reads your chat{"\n"}is publicly verifiable on GitHub.
+          </p>
+        </div>
+      </section>
+
+      {/* Feature Overviews */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mt-16 text-left">
         <div className="bg-[#121210]/40 border border-[#c8956c]/5 hover:border-[#c8956c]/10 p-6 rounded-sm space-y-3 transition-all">
           <div className="flex items-center gap-3">
@@ -227,7 +269,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How to Export Instructions */}
+      {/* STEP 1 — How to Export Instructions with SVG Phone Mockups */}
       <section className="w-full mt-24 border-t border-[#c8956c]/10 pt-16">
         <div className="text-center space-y-3 mb-10">
           <h3 className="font-serif text-3xl text-[#f4f4f0]">
@@ -260,79 +302,111 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Timeline Guide */}
+        {/* Timeline Guide with SVG Mockups */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-[#121210] border border-[#c8956c]/5 p-6 rounded-sm space-y-4 relative">
-            <span className="absolute top-4 right-4 font-mono text-[10px] text-[#c8956c]/40 uppercase tracking-widest">
-              Step 01
-            </span>
-            <h4 className="font-serif text-lg text-[#f4f4f0]">Select Chat</h4>
-            <p className="font-serif text-sm text-[#f4f4f0]/60 leading-relaxed italic">
-              {deviceTab === "ios"
-                ? "Open WhatsApp, tap on the chat thread, and select the contact info header at the top of the screen."
-                : "Open WhatsApp, tap on the chat, and tap the three vertical dots menu in the top right corner."}
-            </p>
-            {/* SVG Visual Mockup instead of placeholders */}
-            <div className="border border-[#c8956c]/10 h-28 rounded-sm bg-[#0b0b09] flex items-center justify-center text-[#c8956c]/30 font-mono text-[9px] uppercase tracking-widest">
-              [ Contact Info Screen ]
+          {/* Step 1 */}
+          <div className="bg-[#121210] border border-[#c8956c]/5 p-6 rounded-sm space-y-6 relative flex flex-col justify-between items-center text-center">
+            <div className="w-full text-left space-y-2">
+              <span className="font-mono text-[10px] text-[#c8956c]/40 uppercase tracking-widest block">
+                Step 01
+              </span>
+              <h4 className="font-serif text-lg text-[#f4f4f0]">Select Chat</h4>
+              <p className="font-serif text-sm text-[#f4f4f0]/60 leading-relaxed italic min-h-[48px]">
+                {deviceTab === "ios"
+                  ? "Open WhatsApp, tap on the chat thread, and select the contact info header at the top of the screen."
+                  : "Open WhatsApp, tap on the chat, and tap the three vertical dots menu in the top right corner."}
+              </p>
+            </div>
+            
+            {/* SVG Visual Mockup 1 or 4 */}
+            <div className="w-full flex justify-center pt-2">
+              {deviceTab === "ios" ? <SVG1_iOSChat /> : <SVG4_AndroidChat />}
             </div>
           </div>
 
-          <div className="bg-[#121210] border border-[#c8956c]/5 p-6 rounded-sm space-y-4 relative">
-            <span className="absolute top-4 right-4 font-mono text-[10px] text-[#c8956c]/40 uppercase tracking-widest">
-              Step 02
-            </span>
-            <h4 className="font-serif text-lg text-[#f4f4f0]">Export Option</h4>
-            <p className="font-serif text-sm text-[#f4f4f0]/60 leading-relaxed italic">
-              {deviceTab === "ios"
-                ? "Scroll to the very bottom of the contact details page and tap on the 'Export Chat' button."
-                : "Select 'More' from the dropdown list, then tap on the 'Export Chat' option."}
-            </p>
-            <div className="border border-[#c8956c]/10 h-28 rounded-sm bg-[#0b0b09] flex items-center justify-center text-[#c8956c]/30 font-mono text-[9px] uppercase tracking-widest">
-              [ Tap Export Chat ]
+          {/* Step 2 */}
+          <div className="bg-[#121210] border border-[#c8956c]/5 p-6 rounded-sm space-y-6 relative flex flex-col justify-between items-center text-center">
+            <div className="w-full text-left space-y-2">
+              <span className="font-mono text-[10px] text-[#c8956c]/40 uppercase tracking-widest block">
+                Step 02
+              </span>
+              <h4 className="font-serif text-lg text-[#f4f4f0]">Export Option</h4>
+              <p className="font-serif text-sm text-[#f4f4f0]/60 leading-relaxed italic min-h-[48px]">
+                {deviceTab === "ios"
+                  ? "Scroll to the very bottom of the contact details page and tap on the 'Export Chat' button."
+                  : "Select 'Export chat' from the dropdown menu options."}
+              </p>
+            </div>
+
+            {/* SVG Visual Mockup 2 or 5 */}
+            <div className="w-full flex justify-center pt-2">
+              {deviceTab === "ios" ? <SVG2_iOSContactInfo /> : <SVG5_AndroidMoreOptions />}
             </div>
           </div>
 
-          <div className="bg-[#121210] border border-[#c8956c]/5 p-6 rounded-sm space-y-4 relative">
-            <span className="absolute top-4 right-4 font-mono text-[10px] text-[#c8956c]/40 uppercase tracking-widest">
-              Step 03
-            </span>
-            <h4 className="font-serif text-lg text-[#f4f4f0]">Choose Without Media</h4>
-            <p className="font-serif text-sm text-[#f4f4f0]/60 leading-relaxed italic">
-              {deviceTab === "ios"
-                ? "Choose 'Without Media' to generate a lightweight .txt file. Share it to your Files app, then drag it here."
-                : "Choose 'Without Media' when prompted. Email or save the resulting .txt file, and upload it above."}
-            </p>
-            <div className="border border-[#c8956c]/10 h-28 rounded-sm bg-[#0b0b09] flex items-center justify-center text-[#c8956c]/30 font-mono text-[9px] uppercase tracking-widest">
-              [ Select Without Media ]
+          {/* Step 3 */}
+          <div className="bg-[#121210] border border-[#c8956c]/5 p-6 rounded-sm space-y-6 relative flex flex-col justify-between items-center text-center">
+            <div className="w-full text-left space-y-2">
+              <span className="font-mono text-[10px] text-[#c8956c]/40 uppercase tracking-widest block">
+                Step 03
+              </span>
+              <h4 className="font-serif text-lg text-[#f4f4f0]">Choose Without Media</h4>
+              <p className="font-serif text-sm text-[#f4f4f0]/60 leading-relaxed italic min-h-[48px]">
+                {deviceTab === "ios"
+                  ? "Choose 'Without Media' to generate a lightweight .txt file. Share it to your Files app, then drag it here."
+                  : "Choose 'Without Media' when prompted. Email or save the resulting .txt file, and upload it above."}
+              </p>
+            </div>
+
+            {/* SVG Visual Mockup 3 or 6 */}
+            <div className="w-full flex justify-center pt-2">
+              {deviceTab === "ios" ? <SVG3_iOSExportDialog /> : <SVG6_AndroidExportDialog />}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer / Links */}
-      <footer className="w-full mt-24 border-t border-[#c8956c]/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="font-mono text-[10px] text-[#f4f4f0]/30 tracking-widest uppercase">
-          &copy; {new Date().getFullYear()} Memra. Open Source Parser.
-        </p>
-        <div className="flex gap-6">
+      {/* STEP 4 — Fixed Footer */}
+      <footer className="w-full mt-24 border-t border-[#c8956c]/10 pt-8 pb-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        {/* Left Side */}
+        <div className="space-y-1 text-center md:text-left">
+          <p className="font-mono text-[9px] text-[#f4f4f0]/40 tracking-widest uppercase">
+            &copy; 2026 Memra
+          </p>
+          <p className="font-serif text-[11px] italic text-[#f4f4f0]/40">
+            Memories deserve better than a text file.
+          </p>
+        </div>
+
+        {/* Center: Desktop Privacy Badge */}
+        <div className="hidden md:flex items-center gap-1.5 bg-[#121210] border border-[#c8956c]/15 px-3 py-1.5 rounded-full">
+          <Shield className="w-3 h-3 text-[#c8956c]" />
+          <span className="font-mono text-[9px] text-[#f4f4f0]/50 tracking-widest uppercase">
+            Zero server transmission
+          </span>
+        </div>
+
+        {/* Right Side: Links */}
+        <div className="flex items-center gap-3 font-mono text-[9px] text-[#f4f4f0]/40 tracking-widest uppercase">
           <Link
             href="/how-it-works"
-            className="font-mono text-[10px] text-[#c8956c] tracking-widest uppercase hover:underline"
+            className="hover:text-[#c8956c] transition-colors"
           >
-            How it works
+            How it Works
           </Link>
+          <span>·</span>
           <Link
             href="/privacy"
-            className="font-mono text-[10px] text-[#c8956c] tracking-widest uppercase hover:underline"
+            className="hover:text-[#c8956c] transition-colors"
           >
             Privacy Policy
           </Link>
+          <span>·</span>
           <a
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[10px] text-[#c8956c] tracking-widest uppercase hover:underline"
+            className="hover:text-[#c8956c] transition-colors"
           >
             GitHub
           </a>

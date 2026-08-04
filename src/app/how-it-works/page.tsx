@@ -1,10 +1,22 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Cpu, ShieldAlert, FileText, Music, CreditCard } from "lucide-react";
+import { ArrowLeft, Cpu, ShieldAlert, Music, CreditCard, Shield } from "lucide-react";
+import {
+  SVG1_iOSChat,
+  SVG2_iOSContactInfo,
+  SVG3_iOSExportDialog,
+  SVG4_AndroidChat,
+  SVG5_AndroidMoreOptions,
+  SVG6_AndroidExportDialog,
+} from "@/components/ExportGuideMockups";
 
 export default function HowItWorks() {
+  const [deviceTab, setDeviceTab] = useState<"ios" | "android">("ios");
+
   return (
-    <main className="flex-1 flex flex-col px-6 py-12 md:py-20 max-w-3xl mx-auto w-full space-y-12">
+    <main className="flex-1 flex flex-col px-6 py-12 md:py-20 max-w-4xl mx-auto w-full space-y-16">
       {/* Navigation */}
       <div>
         <Link
@@ -25,9 +37,102 @@ export default function HowItWorks() {
         </p>
       </section>
 
+      {/* Export Guide Section with SVGs */}
+      <section className="w-full border-y border-[#c8956c]/10 py-12 space-y-10">
+        <div className="text-center space-y-3">
+          <h3 className="font-serif text-3xl text-[#f4f4f0]">
+            How to Export Your Chat
+          </h3>
+          <p className="font-mono text-[10px] text-[#c8956c] tracking-widest uppercase">
+            Visual step-by-step export walkthrough
+          </p>
+        </div>
+
+        {/* Platform Toggle */}
+        <div className="flex justify-center">
+          <div className="bg-[#121210] border border-[#c8956c]/10 p-1 rounded-sm flex">
+            <button
+              onClick={() => setDeviceTab("ios")}
+              className={`font-mono text-[10px] tracking-widest uppercase px-5 py-2 transition-all rounded-sm ${
+                deviceTab === "ios" ? "bg-[#c8956c] text-[#0b0b09]" : "text-[#f4f4f0]/60 hover:text-[#f4f4f0]"
+              }`}
+            >
+              iOS / iPhone
+            </button>
+            <button
+              onClick={() => setDeviceTab("android")}
+              className={`font-mono text-[10px] tracking-widest uppercase px-5 py-2 transition-all rounded-sm ${
+                deviceTab === "android" ? "bg-[#c8956c] text-[#0b0b09]" : "text-[#f4f4f0]/60 hover:text-[#f4f4f0]"
+              }`}
+            >
+              Android
+            </button>
+          </div>
+        </div>
+
+        {/* Timeline Guide with SVG Mockups */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Step 1 */}
+          <div className="bg-[#121210] border border-[#c8956c]/5 p-6 rounded-sm space-y-6 flex flex-col justify-between items-center text-center">
+            <div className="w-full text-left space-y-2">
+              <span className="font-mono text-[10px] text-[#c8956c]/40 uppercase tracking-widest block">
+                Step 01
+              </span>
+              <h4 className="font-serif text-lg text-[#f4f4f0]">Select Chat</h4>
+              <p className="font-serif text-sm text-[#f4f4f0]/60 leading-relaxed italic min-h-[48px]">
+                {deviceTab === "ios"
+                  ? "Open WhatsApp, tap on the chat thread, and select the contact info header at the top of the screen."
+                  : "Open WhatsApp, tap on the chat, and tap the three vertical dots menu in the top right corner."}
+              </p>
+            </div>
+            
+            <div className="w-full flex justify-center pt-2">
+              {deviceTab === "ios" ? <SVG1_iOSChat /> : <SVG4_AndroidChat />}
+            </div>
+          </div>
+
+          {/* Step 2 */}
+          <div className="bg-[#121210] border border-[#c8956c]/5 p-6 rounded-sm space-y-6 flex flex-col justify-between items-center text-center">
+            <div className="w-full text-left space-y-2">
+              <span className="font-mono text-[10px] text-[#c8956c]/40 uppercase tracking-widest block">
+                Step 02
+              </span>
+              <h4 className="font-serif text-lg text-[#f4f4f0]">Export Option</h4>
+              <p className="font-serif text-sm text-[#f4f4f0]/60 leading-relaxed italic min-h-[48px]">
+                {deviceTab === "ios"
+                  ? "Scroll to the very bottom of the contact details page and tap on the 'Export Chat' button."
+                  : "Select 'Export chat' from the dropdown menu options."}
+              </p>
+            </div>
+
+            <div className="w-full flex justify-center pt-2">
+              {deviceTab === "ios" ? <SVG2_iOSContactInfo /> : <SVG5_AndroidMoreOptions />}
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className="bg-[#121210] border border-[#c8956c]/5 p-6 rounded-sm space-y-6 flex flex-col justify-between items-center text-center">
+            <div className="w-full text-left space-y-2">
+              <span className="font-mono text-[10px] text-[#c8956c]/40 uppercase tracking-widest block">
+                Step 03
+              </span>
+              <h4 className="font-serif text-lg text-[#f4f4f0]">Choose Without Media</h4>
+              <p className="font-serif text-sm text-[#f4f4f0]/60 leading-relaxed italic min-h-[48px]">
+                {deviceTab === "ios"
+                  ? "Choose 'Without Media' to generate a lightweight .txt file. Share it to your Files app, then drag it here."
+                  : "Choose 'Without Media' when prompted. Email or save the resulting .txt file, and upload it above."}
+              </p>
+            </div>
+
+            <div className="w-full flex justify-center pt-2">
+              {deviceTab === "ios" ? <SVG3_iOSExportDialog /> : <SVG6_AndroidExportDialog />}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Narrative Pipeline */}
-      <section className="space-y-12 mt-8">
-        
+      <section className="space-y-12">
         {/* Step 1 */}
         <div className="flex flex-col md:flex-row gap-6 items-start">
           <div className="bg-[#121210] border border-[#c8956c]/20 p-3.5 rounded-sm flex items-center justify-center">
@@ -99,7 +204,6 @@ export default function HowItWorks() {
             </p>
           </div>
         </div>
-
       </section>
 
       {/* Visual Sandbox Summary */}
@@ -111,7 +215,6 @@ export default function HowItWorks() {
           Everything inside the dotted box below occurs inside your computer's browser session. The boundary is secure, ensuring zero leakage of your personal data.
         </p>
 
-        {/* CSS Sandbox Visual */}
         <div className="border border-dashed border-[#c8956c]/30 rounded-sm p-6 bg-[#0b0b09] space-y-4 text-center">
           <span className="font-mono text-[8px] text-[#c8956c] tracking-widest uppercase bg-[#c8956c]/10 border border-[#c8956c]/20 px-2 py-0.5 rounded-sm">
             Local Sandbox (Your Device)
@@ -137,6 +240,50 @@ export default function HowItWorks() {
           </div>
         </div>
       </section>
+
+      {/* STEP 4 — Footer */}
+      <footer className="w-full border-t border-[#c8956c]/10 pt-8 pb-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="space-y-1 text-center md:text-left">
+          <p className="font-mono text-[9px] text-[#f4f4f0]/40 tracking-widest uppercase">
+            &copy; 2026 Memra
+          </p>
+          <p className="font-serif text-[11px] italic text-[#f4f4f0]/40">
+            Memories deserve better than a text file.
+          </p>
+        </div>
+
+        <div className="hidden md:flex items-center gap-1.5 bg-[#121210] border border-[#c8956c]/15 px-3 py-1.5 rounded-full">
+          <Shield className="w-3 h-3 text-[#c8956c]" />
+          <span className="font-mono text-[9px] text-[#f4f4f0]/50 tracking-widest uppercase">
+            Zero server transmission
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3 font-mono text-[9px] text-[#f4f4f0]/40 tracking-widest uppercase">
+          <Link
+            href="/how-it-works"
+            className="hover:text-[#c8956c] transition-colors"
+          >
+            How it Works
+          </Link>
+          <span>·</span>
+          <Link
+            href="/privacy"
+            className="hover:text-[#c8956c] transition-colors"
+          >
+            Privacy Policy
+          </Link>
+          <span>·</span>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#c8956c] transition-colors"
+          >
+            GitHub
+          </a>
+        </div>
+      </footer>
     </main>
   );
 }

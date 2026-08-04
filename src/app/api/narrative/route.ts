@@ -184,7 +184,7 @@ function generateFallbackNarrative(moments: MomentInput[]): string[] {
 
 export async function POST(req: Request) {
   try {
-    const { moments } = (await req.json()) as { moments: MomentInput[] };
+    const { moments, relationshipBrief } = (await req.json()) as { moments: MomentInput[]; relationshipBrief?: string };
 
     if (!moments || !Array.isArray(moments) || moments.length !== 5) {
       return NextResponse.json(
@@ -215,8 +215,11 @@ export async function POST(req: Request) {
           role: "user",
           content: `Write one narrative paragraph for each of the 5 moments below. Each paragraph is exactly 4 complete sentences. Use the actual names and quote naturally in the writing. Write in third person only.
 
-Format rules — every paragraph must follow this exact structure:
-Sentence 1: Describe what was happening between these two people at this moment in time, heavily incorporating the blended relationship types, archetypes, and context. For example, if the relationship profile indicates a blend of classmate and cofounder, emphasize college nostalgia, late-night coding, syllabus deadlines, startup ambition, or exam pressure.
+${relationshipBrief ? `OVERALL RELATIONSHIP BRIEF:
+${relationshipBrief}
+
+` : ""}Format rules — every paragraph must follow this exact structure:
+Sentence 1: Describe what was happening between these two people at this moment in time, heavily incorporating the relationship brief, blended relationship types, archetypes, and context. For example, if the relationship profile indicates a blend of classmate and cofounder, emphasize college nostalgia, late-night coding, syllabus deadlines, startup ambition, or exam pressure.
 Sentence 2: Explain what this specific quote reveals about the sender's archetype (e.g. Caregiver checking safety, Motivator celebrating, Comedian teasing, Listener validating).
 Sentence 3: Describe the emotional weight of this exchange on their relationship, adapting it to the specified storytelling style (documentary, observational, poetic, minimalist, nostalgic, conversational, cinematic, or reflective).
 Sentence 4: End with what changed or solidified between them after this moment.
@@ -231,7 +234,7 @@ STORYTELLING STYLES GUIDE:
 - cinematic: visual, dramatic framing, scene-setting, widescreen perspective.
 - reflective: thoughtful, looking at the deeper significance and meaning.
 
-Do NOT be generic. Be specific to the names, the quote, the relationship profiles, the archetypes, and the storytelling style.
+Do NOT be generic. Be specific to the names, the quote, the relationship brief, the relationship profiles, the archetypes, and the storytelling style.
 
 ${moments.map((m, i) => {
   const blendedStr = m.blendedRelationships

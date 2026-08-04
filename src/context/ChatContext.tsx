@@ -207,11 +207,29 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       // 5. Cinematic Moments
       const detectedMoments = detectCinematicMoments(finalMsgs);
 
-      // 6. Narrative Generation (Fetch from API Route)
+      // 5.5. Relationship Brief Generation (Fetch 150-word profile context using 80 representative messages)
+      let relationshipBrief: string | undefined = undefined;
+      try {
+        const briefRes = await fetch("/api/relationship-brief", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            messages: finalMsgs.map((m) => ({ sender: m.sender, content: m.content, date: m.date })),
+          }),
+        });
+        if (briefRes.ok) {
+          const briefData = await briefRes.json();
+          relationshipBrief = briefData.relationshipBrief;
+        }
+      } catch (briefErr) {
+        console.warn("Could not generate relationship brief context:", briefErr);
+      }
+
+      // 6. Narrative Generation (Fetch from API Route with Relationship Brief context)
       const res = await fetch("/api/narrative", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ moments: detectedMoments }),
+        body: JSON.stringify({ moments: detectedMoments, relationshipBrief }),
       });
 
       if (!res.ok) {

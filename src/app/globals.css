@@ -44,3 +44,17 @@ body {
   background-color: rgba(200, 149, 108, 0.2);
   color: #f4f4f0;
 }
+
+@keyframes scrollUpLoop {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scroll-raw {
+  animation: scrollUpLoop 16s linear infinite;
+}
+
