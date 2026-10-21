@@ -31,10 +31,10 @@ function generateFallbackNarrative(moments: MomentInput[]): string[] {
     const dateFormatted = isNaN(dateObj.getTime())
       ? moment.date
       : dateObj.toLocaleDateString("en-US", {
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-        });
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      });
 
     // Helper to select template deterministically based on index to prevent collapse
     const selectTemplate = (templates: string[]) => {
@@ -203,7 +203,7 @@ export async function POST(req: Request) {
     const groq = new Groq({ apiKey });
 
     const completion = await groq.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+      model: "openai/gpt-oss-120b",
       messages: [
         {
           role: "system",
@@ -237,20 +237,20 @@ STORYTELLING STYLES GUIDE:
 Do NOT be generic. Be specific to the names, the quote, the relationship brief, the relationship profiles, the archetypes, and the storytelling style.
 
 ${moments.map((m, i) => {
-  const blendedStr = m.blendedRelationships
-    ? m.blendedRelationships.map(r => `${r.type} (${Math.round(r.confidence * 100)}% confidence)`).join(", ")
-    : m.relationshipType || 'Friendship';
-  
-  const archetypesStr = `Person A: ${m.archetypesA?.map(a => `${a.archetype} ${a.score}%`).join(", ") || 'N/A'} | Person B: ${m.archetypesB?.map(b => `${b.archetype} ${b.score}%`).join(", ") || 'N/A'}`;
+            const blendedStr = m.blendedRelationships
+              ? m.blendedRelationships.map(r => `${r.type} (${Math.round(r.confidence * 100)}% confidence)`).join(", ")
+              : m.relationshipType || 'Friendship';
 
-  return `--- Chapter ${i + 1}: ${m.title} (${m.date}) ---
+            const archetypesStr = `Person A: ${m.archetypesA?.map(a => `${a.archetype} ${a.score}%`).join(", ") || 'N/A'} | Person B: ${m.archetypesB?.map(b => `${b.archetype} ${b.score}%`).join(", ") || 'N/A'}`;
+
+            return `--- Chapter ${i + 1}: ${m.title} (${m.date}) ---
 Relationship Profile (Blended): ${blendedStr}
 Conversational Archetypes: ${archetypesStr}
 Storytelling Style: ${m.storytellingStyle || 'documentary'}
 Confidence Score: ${m.confidenceScore || 85}% (Evidence: ${m.evidenceList?.join(', ') || 'Contextual'})
 ${m.sender} said: "${m.quote}"
 Context of the conversation: ${m.context || 'Not available'}`;
-}).join('\n\n')}
+          }).join('\n\n')}
 
 RESPONSE FORMAT — Return ONLY this, nothing else:
 ["paragraph one as a single line with no line breaks", "paragraph two as a single line with no line breaks", "paragraph three as a single line with no line breaks", "paragraph four as a single line with no line breaks", "paragraph five as a single line with no line breaks"]
@@ -263,7 +263,7 @@ Every string must be on one line. No \\n inside strings. Start with [ and end wi
     });
 
     const responseText = completion.choices[0]?.message?.content || "";
-    
+
     let cleaned = responseText.trim();
     cleaned = cleaned.replace(/```json\s*/gi, '').replace(/```\s*/gi, '');
 
@@ -279,7 +279,7 @@ Every string must be on one line. No \\n inside strings. Start with [ and end wi
     cleaned = cleaned.replace(/[\u0000-\u001F\u007F]/g, (char) => {
       switch (char) {
         case '\n': return '\\n';
-        case '\r': return '\\r';  
+        case '\r': return '\\r';
         case '\t': return '\\t';
         default: return '';
       }
@@ -299,7 +299,7 @@ Every string must be on one line. No \\n inside strings. Start with [ and end wi
     return NextResponse.json({ narratives, fallback: false });
   } catch (error: any) {
     console.error("Groq Narrative API error:", error);
-    
+
     try {
       const body = await req.clone().json();
       const narratives = generateFallbackNarrative(body.moments);

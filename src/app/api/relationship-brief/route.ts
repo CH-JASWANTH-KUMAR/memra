@@ -9,10 +9,10 @@ interface MessageInput {
 
 function sampleRepresentativeMessages(messages: MessageInput[], targetCount = 80): string {
   if (!messages || messages.length === 0) return "";
-  
+
   // Filter out empty messages
   const validMessages = messages.filter(m => m && m.sender && m.content && m.content.trim().length > 0);
-  
+
   if (validMessages.length <= targetCount) {
     return validMessages.map(m => `${m.sender}: ${m.content.trim()}`).join("\n");
   }
@@ -32,7 +32,7 @@ function sampleRepresentativeMessages(messages: MessageInput[], targetCount = 80
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as { messages?: MessageInput[]; conversationSample?: string };
-    
+
     let conversationSample = body.conversationSample || "";
     if (!conversationSample && body.messages && Array.isArray(body.messages)) {
       conversationSample = sampleRepresentativeMessages(body.messages, 80);
@@ -56,7 +56,7 @@ export async function POST(req: Request) {
     const groq = new Groq({ apiKey });
 
     const completion = await groq.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+      model: "openai/gpt-oss-120b",
       temperature: 0.5,
       max_tokens: 300,
       messages: [
