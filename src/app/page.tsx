@@ -105,7 +105,7 @@ export default function Home() {
               <div className="absolute inset-0 rounded-full border border-[#c8956c]/20"></div>
               <div className="absolute inset-0 rounded-full border-t border-[#c8956c] animate-spin"></div>
             </div>
-            
+
             <div className="space-y-2">
               <h3 className="font-serif text-2xl tracking-wide text-[#f4f4f0]">
                 Assembling Archive
@@ -114,7 +114,7 @@ export default function Home() {
                 {loadingTexts[loadingStep]}
               </p>
             </div>
-            
+
             <div className="pt-4 border-t border-[#c8956c]/10">
               <p className="font-serif text-xs italic text-[#f4f4f0]/40">
                 Your messages never leave this screen. All computations occur in-browser.
@@ -152,11 +152,10 @@ export default function Home() {
           onDragLeave={handleDrag}
           onDrop={handleDrop}
           onClick={onButtonClick}
-          className={`border border-dashed rounded-sm p-8 md:p-12 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center space-y-4 ${
-            dragActive
+          className={`border border-dashed rounded-sm p-8 md:p-12 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center space-y-4 ${dragActive
               ? "border-[#c8956c] bg-[#c8956c]/5 scale-[0.99]"
               : "border-[#c8956c]/20 hover:border-[#c8956c]/40 hover:bg-[#c8956c]/2"
-          }`}
+            }`}
         >
           <input
             ref={fileInputRef}
@@ -285,17 +284,15 @@ export default function Home() {
           <div className="bg-[#121210] border border-[#c8956c]/10 p-1 rounded-sm flex">
             <button
               onClick={() => setDeviceTab("ios")}
-              className={`font-mono text-[10px] tracking-widest uppercase px-5 py-2 transition-all rounded-sm ${
-                deviceTab === "ios" ? "bg-[#c8956c] text-[#0b0b09]" : "text-[#f4f4f0]/60 hover:text-[#f4f4f0]"
-              }`}
+              className={`font-mono text-[10px] tracking-widest uppercase px-5 py-2 transition-all rounded-sm ${deviceTab === "ios" ? "bg-[#c8956c] text-[#0b0b09]" : "text-[#f4f4f0]/60 hover:text-[#f4f4f0]"
+                }`}
             >
               iOS / iPhone
             </button>
             <button
               onClick={() => setDeviceTab("android")}
-              className={`font-mono text-[10px] tracking-widest uppercase px-5 py-2 transition-all rounded-sm ${
-                deviceTab === "android" ? "bg-[#c8956c] text-[#0b0b09]" : "text-[#f4f4f0]/60 hover:text-[#f4f4f0]"
-              }`}
+              className={`font-mono text-[10px] tracking-widest uppercase px-5 py-2 transition-all rounded-sm ${deviceTab === "android" ? "bg-[#c8956c] text-[#0b0b09]" : "text-[#f4f4f0]/60 hover:text-[#f4f4f0]"
+                }`}
             >
               Android
             </button>
@@ -317,7 +314,7 @@ export default function Home() {
                   : "Open WhatsApp, tap on the chat, and tap the three vertical dots menu in the top right corner."}
               </p>
             </div>
-            
+
             {/* SVG Visual Mockup 1 or 4 */}
             <div className="w-full flex justify-center pt-2">
               {deviceTab === "ios" ? <SVG1_iOSChat /> : <SVG4_AndroidChat />}
@@ -403,7 +400,7 @@ export default function Home() {
           </Link>
           <span>·</span>
           <a
-            href="https://github.com"
+            href="https://github.com/CH-JASWANTH-KUMAR/memra"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#c8956c] transition-colors"
